@@ -6,12 +6,6 @@ statement ::= "DEKHAO" (expression | string) nl
 | "JAO" ident nl
 | "NAM" ident "=" expression nl
 | "BTAO" ident nl
-comparison ::= expression (("==" | "!=" | ">" | ">=" | "<" | "<=") expression)+
-expression ::= term {( "-" | "+" ) term}
-term ::= unary {( "/" | "\*" ) unary}
-unary ::= ["+" | "-"] primary
-primary ::= number | ident
-nl ::= '\n'
 
 program ::= {statement}
 statement ::= "PRINT" (expression | string) nl
@@ -21,3 +15,9 @@ statement ::= "PRINT" (expression | string) nl
 | "GOTO" ident nl
 | "LET" ident "=" expression nl
 | "INPUT" ident nl
+comparison ::= expression (("==" | "!=" | ">" | ">=" | "<" | "<=") expression)+
+expression ::= term {( "-" | "+" ) term}
+term ::= unary {( "/" | "\*" ) unary}
+unary ::= ["+" | "-"] primary
+primary ::= number | ident
+nl ::= '\n'

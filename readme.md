@@ -1,4 +1,4 @@
-# Simple Compiler wriiten in Go
+# URDU Programming Language
 
 It is simple compiler that compiles a dialect of BASIC to C, while being written in Go Lang
 
@@ -12,7 +12,6 @@ It supports:
 - Input numbers
 - Labels and goto
 - Comments
-  '
 
 ## How to run
 
@@ -24,22 +23,25 @@ go build -o compiler
 ## Example Code
 
 ```
-PRINT "How many fibonacci numbers do you want?"
-INPUT nums
-PRINT ""
+NAM a = 0
+JAB a < 1 KARO
+    DEKHAO "Enter number of scores: "
+    BTAO a
+JABBND
 
-LET a = 0
-LET b = 1
-WHILE nums > 0 REPEAT
-    PRINT a
-    LET c = a + b
-    LET a = b
-    LET b = c
-    LET nums = nums - 1
-ENDWHILE
+NAM b = 0
+NAM s = 0
+DEKHAO "Enter one value at a time: "
+JAB b < a KARO
+    BTAO c
+    NAM s = s + c
+    NAM b = b + 1
+JABBND
+
+DEKHAO "Average: "
+DEKHAO s / a
 ```
 
 ## Resources
 
-It is basically rewrite of [teenytinycompiler](http://web.eecs.utk.edu/~azh/blog/teenytinycompiler1.html) by [AZHenley](https://github.com/AZHenley) by that is written in python
 Read the tutorial: [Let's make a Teeny Tiny compiler, part 1](http://web.eecs.utk.edu/~azh/blog/teenytinycompiler1.html) as well as [part 2](http://web.eecs.utk.edu/~azh/blog/teenytinycompiler2.html) and [part 3](http://web.eecs.utk.edu/~azh/blog/teenytinycompiler3.html)
