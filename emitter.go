@@ -10,7 +10,6 @@ type Emitter struct {
 	code     string
 	header   string
 	fullPath string
-	run      bool
 }
 
 func (e *Emitter) emit(code string) {
@@ -31,13 +30,12 @@ func (e *Emitter) writeFile() {
 	if err != nil {
 		panic(err)
 	}
-	exPath := filepath.Dir(ex)
-	println(exPath)
-	os.Mkdir(exPath+"/output", 0755)
+	filepath.Dir(ex)
+	// println(exPath)
+	os.Mkdir("/home/dev/urdu/output", 0755)
 	os.WriteFile(e.fullPath, []byte(code), 0755)
-	exec.Command("gcc", e.fullPath, "-o", "output/out").Run()
+	exec.Command("gcc", e.fullPath, "-o", "/home/dev/urdu/output/out").Run()
 	println("Compiled successfully!")
-
 	println("Run with \n ./output/out")
 
 }

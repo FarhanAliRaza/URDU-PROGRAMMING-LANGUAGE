@@ -31,7 +31,7 @@ func main() {
 	var file string
 	flag.StringVar(&file, "f", "", "a file to compile")
 	//verbose := flag.Bool("v", false, "verbose mode")
-	run := flag.Bool("r", false, "run the program after compiling")
+	// run := flag.Bool("r", false, "run the program after compiling")
 	flag.Parse()
 
 	if len(file) == 0 {
@@ -44,7 +44,7 @@ func main() {
 
 	codeString := readSource(file)
 	source := Source{source: codeString + "\n", curChar: "", curPos: -1, symbols: *NewSet(), labelsDeclared: *NewSet(), labelsGotoed: *NewSet()}
-	emitter := Emitter{fullPath: "output/out.c", header: "", code: "", run: *run}
+	emitter := Emitter{fullPath: "output/out.c", header: "", code: ""}
 	parser := Parser{source: source, curToken: Token{}, peekToken: Token{}, emitter: emitter}
 	do_parsing(parser)
 

@@ -152,12 +152,12 @@ func (p *Parser) comparison() {
 // statements
 func (p *Parser) statement() {
 	//Check the first token to see what kind of statement this is.
-	// # "PRINT" (expression | string)
+	// # "DEKHAO" (expression | string)
 
-	if p.checkToken(tokens["PRINT"]) {
-		// "PRINT" (expression | string)
+	if p.checkToken(tokens["DEKHAO"]) {
+		// "DEKHAO" (expression | string)
 
-		println("PRINT-statement")
+		println("DEKHAO-statement")
 
 		p.nextToken()
 		if p.checkToken(tokens["STRING"]) {
@@ -175,43 +175,43 @@ func (p *Parser) statement() {
 
 		}
 
-	} else if p.checkToken((tokens["IF"])) {
-		// "IF" comparison "THEN" {statement} "ENDIF"
-		println("IF-statement")
+	} else if p.checkToken((tokens["AGR"])) {
+		// "AGR" comparison "PHR" {statement} "AGRBND"
+		println("AGR-statement")
 		p.nextToken()
 		p.emitter.emit("if(")
 
 		p.comparison()
-		p.match(tokens["THEN"])
+		p.match(tokens["PHR"])
 		p.nl()
 		p.emitter.emitLine("){")
 
-		for !p.checkToken(tokens["ENDIF"]) {
+		for !p.checkToken(tokens["AGRBND"]) {
 			p.statement()
 		}
-		p.match(tokens["ENDIF"])
+		p.match(tokens["AGRBND"])
 		p.emitter.emitLine("}")
 
-	} else if p.checkToken((tokens["WHILE"])) {
-		// "WHILE" comparison "REPEAT" {statement} "ENDWHILE"
-		println("WHILE-statement")
+	} else if p.checkToken((tokens["JAB"])) {
+		// "JAB" comparison "KARO" {statement} "JABBND"
+		println("JAB-statement")
 		p.nextToken()
 		p.emitter.emit("while(")
 
 		p.comparison()
-		p.match(tokens["REPEAT"])
+		p.match(tokens["KARO"])
 		p.nl()
 		p.emitter.emitLine("){")
 
-		for !p.checkToken(tokens["ENDWHILE"]) {
+		for !p.checkToken(tokens["JABBND"]) {
 			p.statement()
 		}
-		p.match(tokens["ENDWHILE"])
+		p.match(tokens["JABBND"])
 		p.emitter.emitLine("}")
 
-	} else if p.checkToken((tokens["LABEL"])) {
-		// "LABEL" ident
-		println("LABEL-statement")
+	} else if p.checkToken((tokens["DEKHAO"])) {
+		// "DEKHAO" ident
+		println("DEKHAO-statement")
 		p.nextToken()
 		// Make sure this label doesn't already exist.
 		if p.source.labelsDeclared.Contains(p.curToken.text) {
@@ -222,17 +222,17 @@ func (p *Parser) statement() {
 		p.emitter.emitLine(p.curToken.text + ":")
 
 		p.match(tokens["IDENT"])
-	} else if p.checkToken((tokens["GOTO"])) {
-		// "GOTO" ident
-		println("GOTO-statement")
+	} else if p.checkToken((tokens["JAO"])) {
+		// "JAO" ident
+		println("JAO-statement")
 		p.nextToken()
 		p.source.labelsGotoed.Add(p.curToken.text)
 		p.emitter.emitLine("goto " + p.curToken.text + ";")
 
 		p.match(tokens["IDENT"])
-	} else if p.checkToken((tokens["LET"])) {
-		// "LET" ident "=" expression
-		println("LET-statement")
+	} else if p.checkToken((tokens["NAM"])) {
+		// "NAM" ident "=" expression
+		println("NAM-statement")
 		p.nextToken()
 		//            #  Check if ident exists in symbol table. If not, declare it.
 
@@ -246,9 +246,9 @@ func (p *Parser) statement() {
 		p.expression()
 		p.emitter.emitLine(";")
 
-	} else if p.checkToken((tokens["INPUT"])) {
-		// "INPUT" ident
-		println("INPUT-statement")
+	} else if p.checkToken((tokens["BTAO"])) {
+		// "BTAO" ident
+		println("BTAO-statement")
 		p.nextToken()
 		//If variable doesn't already exist, declare it.
 		if !p.source.symbols.Contains(p.curToken.text) {
@@ -288,10 +288,10 @@ func (p *Parser) program() {
 	}
 	p.emitter.emitLine("return 0;")
 	p.emitter.emitLine("}")
-	// Check that each label referenced in a GOTO is declared.
+	// Check that each label referenced in a JAO is declared.
 	for key, _ := range p.source.labelsGotoed.m {
 		if !p.source.labelsDeclared.Contains(key) {
-			msg := "Attempting to GOTO to undeclared label: " + key
+			msg := "Attempting to JAO to undeclared label: " + key
 			panic(msg)
 		}
 	}
@@ -307,6 +307,6 @@ func do_parsing(p Parser) {
 	p.program()
 	p.emitter.writeFile()
 
-	println("DONE PARSING")
+	// println("DONE PARSING")
 
 }

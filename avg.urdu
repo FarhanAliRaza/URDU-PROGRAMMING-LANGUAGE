@@ -1,19 +1,19 @@
-# Compute average of given values.
+# BASIC URDU VERSION
 
-LET a = 0
-WHILE a < 1 REPEAT
-    PRINT "Enter number of scores: "
-    INPUT a
-ENDWHILE
+NAM a = 0
+JAB a < 1 KARO
+    DEKHAO "Enter number of scores: "
+    BTAO a
+JABBND
 
-LET b = 0
-LET s = 0
-PRINT "Enter one value at a time: "
-WHILE b < a REPEAT
-    INPUT c
-    LET s = s + c
-    LET b = b + 1
-ENDWHILE
+NAM b = 0
+NAM s = 0
+DEKHAO "Enter one value at a time: "
+JAB b < a KARO
+    BTAO c
+    NAM s = s + c
+    NAM b = b + 1
+JABBND
 
-PRINT "Average: "
-PRINT s / a
+DEKHAO "Average: "
+DEKHAO s / a
