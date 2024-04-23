@@ -24,11 +24,11 @@ go build -o compiler
 
 ```
 DEKHAO "Hello Dunya"
-
 ```
 
 ### Average of numbers program
 ```
+
 NAM a = 0
 JAB a < 1 KARO
     DEKHAO "Enter number of scores: "
@@ -46,6 +46,7 @@ JABBND
 
 DEKHAO "Average: "
 DEKHAO s / a
+
 ```
 
 ## Resources
