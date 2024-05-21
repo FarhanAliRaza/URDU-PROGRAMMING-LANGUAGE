@@ -20,9 +20,15 @@ go build -o compiler
 ./compiler <filename>.urdu
 ```
 
-## Example Code
+## Hello World
 
 ```
+DEKHAO "Hello Dunya"
+```
+
+### Average of numbers program
+```
+
 NAM a = 0
 JAB a < 1 KARO
     DEKHAO "Enter number of scores: "
@@ -40,6 +46,7 @@ JABBND
 
 DEKHAO "Average: "
 DEKHAO s / a
+
 ```
 
 ## Resources
