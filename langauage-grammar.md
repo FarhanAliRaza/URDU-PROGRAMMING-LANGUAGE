@@ -1,5 +1,13 @@
 program ::= {statement}
-statement ::= "DEKHAO" (expression | string) nl
+statement ::= "dekhao" (expression | string) nl
+| "AGR" comparison "PHR" nl {statement} "AGRBND" nl
+| "JAB" comparison "KARO" nl {statement} "JABBND" nl
+| "YE" ident nl
+| "JAO" ident nl
+| "NAM" ident "=" expression nl
+| "BTAO" ident nl
+
+statement ::= "dekhao"((expression | string) ) nl  
 | "AGR" comparison "PHR" nl {statement} "AGRBND" nl
 | "JAB" comparison "KARO" nl {statement} "JABBND" nl
 | "YE" ident nl
